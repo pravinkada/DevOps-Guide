@@ -3,7 +3,8 @@
 - Docker volumes are a way to persist data generated and used by Docker containers. 
 - They allow data to persist beyond the lifetime of a single container instance and enable data sharing between containers.
 
-**Types of Docker Volumes**
+***Types of Docker Volumes***
+
 **Named Volumes:**
 - Managed by Docker, named volumes are easy to use and work well for most use cases.
 
