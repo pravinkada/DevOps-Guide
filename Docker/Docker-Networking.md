@@ -52,3 +52,25 @@ docker run -d --network none my-image
 ```
 
 
+### Connect two Docker containers and verify their connectivity using ping
+1. Create a Bridge Network:
+   ```sh
+   docker network create my-network
+   ```
+2. Run Container : Start the first container and connect it to the created network.
+   ```sh
+   docker run -d --name container1 --network my-network <image1>
+   ```
+3. Run Container : Start the second container and also connect it to the same network.
+   ```sh
+   docker run -d --name container2 --network my-network <image2>
+   ```
+4. Ping Between Containers: Now, you can enter either container and ping the other by its container name.
+   ```sh
+   docker exec -it container1 /bin/bash
+   root@container1:/#apt update -y
+   root@container1:/#apt instll iputils-ping -y
+   root@container1:/#ping container2
+  ```
+
+
