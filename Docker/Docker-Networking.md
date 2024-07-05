@@ -32,34 +32,34 @@ docker run -d --network bridge my-image
 ```
 
 ### 2. Host Network
-**Shares the host's network.**
-No network isolation.
-Ideal for high-performance applications needing low latency.
+- **Shares the host's network.**
+- No network isolation.
+- Ideal for high-performance applications needing low latency.
 **Example:** A container uses the host’s network directly.
 ```sh
 docker run -d --network host my-image
 ```
 ### 3. Overlay Network
-**Connects containers across multiple hosts.**
-Used in Docker Swarm or Kubernetes setups.
-Good for distributed applications.
+- **Connects containers across multiple hosts.**
+- Used in Docker Swarm or Kubernetes setups.
+- Good for distributed applications.
 **Example:** Services in a cluster communicate with each other.
 ```sh
 docker network create --driver overlay my-overlay-network
 ```
 ### 4. Macvlan Network
-**Gives each container a unique MAC address.**
-Containers appear as physical devices on the network.
-Useful for legacy applications needing direct network access.
+- **Gives each container a unique MAC address.**
+- Containers appear as physical devices on the network.
+- Useful for legacy applications needing direct network access.
 Example: Containers have their own IP addresses on the local network.
 ```sh
 docker network create -d macvlan --subnet=192.168.1.0/24 --gateway=192.168.1.1 -o parent=eth0 my-macvlan-network
 ```
 
 ### 5. None Network
-**No network access.**
-Completely isolates the container.
-Used for security-sensitive applications.
+- **No network access.**
+- Completely isolates the container.
+- Used for security-sensitive applications.
 **Example:** A container runs without any network connection.
 ```sh
 docker run -d --network none my-image
