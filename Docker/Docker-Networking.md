@@ -4,20 +4,6 @@
 - **It enables communication between containers, between containers and the host system, and between containers and external networks.**
 
 
-1. [Introduction](#introduction)
-2. [Types of Docker Networks](#key-types-of-docker-networks)
-    - [Bridge Network](#1-bridge-network)
-    - [Host Network](#2-host-network)
-    - [Overlay Network](#3-overlay-network)
-    - [Macvlan Network](#4-macvlan-network)
-    - [None Network](#5-none-network)
-3. [When to Use Each Network](#when-to-use-each-network)
-4. [Conclusion](#conclusion)
-
-
-
-
-
 ## Types of Docker Networks
 
 ### 1. Bridge Network
