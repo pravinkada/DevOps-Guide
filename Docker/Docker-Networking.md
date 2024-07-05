@@ -73,4 +73,3 @@ docker run -d --network none my-image
    root@container1:/#ping container2
   ```
 
-
