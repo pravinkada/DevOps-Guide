@@ -4,19 +4,29 @@
    making it easier to deploy and manage applications with multiple interconnected services.**
 
 ## Why is Docker Compose Important?
-***Simplified Configuration:*** Docker Compose provides a straightforward way to define and configure multiple services in a single file. 
-This reduces the complexity of managing individual Docker commands for each container.
+***Simplified Configuration:*** 
+- Docker Compose provides a straightforward way to define and configure multiple services in a single file. 
+- This reduces the complexity of managing individual Docker commands for each container.
 
-***Multi-Container Applications:*** Many applications consist of multiple components (e.g., a web server, database, and caching server). Docker Compose allows you to define and run these components together, ensuring they are properly connected and configured.
+***Multi-Container Applications:*** 
+- Many applications consist of multiple components (e.g., a web server, database, and caching server).
+- Docker Compose allows you to define and run these components together, ensuring they are properly connected and configured.
 
-***Portability:*** The Docker Compose file (docker-compose.yml) can be shared with others, making it easy to reproduce the same environment across different machines and development setups.
+***Portability:*** 
+-  The Docker Compose file (docker-compose.yml) can be shared with others,
+-  making it easy to reproduce the same environment across different machines and development setups.
 
-****Orchestration:*** Docker Compose handles the orchestration of starting, stopping, and managing the lifecycle of containers, ensuring that they start in the correct order based on dependencies.
+****Orchestration:*** 
+- Docker Compose handles the orchestration of starting, stopping, and managing the lifecycle of containers,
+- ensuring that they start in the correct order based on dependencies.
 
-***Isolation:*** Each service defined in Docker Compose runs in its own isolated container, ensuring that dependencies and configurations do not conflict with other services or applications on the host system.
+***Isolation:*** 
+- Each service defined in Docker Compose runs in its own isolated container, ensuring that dependencies and
+- configurations do not conflict with other services or applications on the host system.
 
 **Example**
-Consider a simple web application that requires a web server and a database. Using Docker Compose, you can define both the web server and the database in a single YAML file, ensuring they are properly connected and configured to work together.
+Consider a simple web application that requires a web server and a database. Using Docker Compose, 
+you can define both the web server and the database in a single YAML file, ensuring they are properly connected and configured to work together.
 
 Docker Compose File Example
 Here's an example docker-compose.yml file for running Apache HTTP Server (httpd) on Amazon Linux:
