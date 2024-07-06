@@ -25,11 +25,8 @@
 - configurations do not conflict with other services or applications on the host system.
 
 **Example**
-Consider a simple web application that requires a web server and a database. Using Docker Compose, 
-you can define both the web server and the database in a single YAML file, ensuring they are properly connected and configured to work together.
 
-Docker Compose File Example
-Here's an example docker-compose.yml file for running Apache HTTP Server (httpd) on Amazon Linux:
+
 
 ```yaml
 version: '3.8'
