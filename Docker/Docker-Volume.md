@@ -44,6 +44,10 @@ Run a Container with a Volume:
 ```sh
 docker run -d --name my_container -v my_volume:/path/in/container my_image
 ```
+**mount volume**
+```sh
+docker run -d --mount source=<volume_name>,target=<container_path> <image_name>
+```
 **Example** 
 To run a MySQL database container with a named volume for data persistence:
 
