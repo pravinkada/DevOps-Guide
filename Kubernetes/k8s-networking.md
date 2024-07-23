@@ -1,7 +1,7 @@
 
-=================================
-KUBERNETES NETWORKING
-=================================
+
+### KUBERNETES NETWORKING
+
 ```yaml
 kind: Pod
 apiVersion: v1
@@ -17,7 +17,7 @@ spec:
       ports:
        - containerPort: 80
 ```
-================
+
 ```yaml
 kind: Deployment
 apiVersion: apps/v1
@@ -40,7 +40,7 @@ spec:
           ports:
           - containerPort: 80
 ```
-====================
+
 ```yaml
 kind: Service                             # Defines to create Service type Object
 apiVersion: v1
@@ -54,13 +54,12 @@ spec:
     name: deployment                    # Apply this service to any pods which has the specific label
   type: ClusterIP                       # Specifies the service type i.e ClusterIP or NodePort
 ```
-
+````
 $ kubectl get svc
+````
 
+### volume labs
 
-===========================
-volume labs
-===========================
 
 ```yaml
 apiVersion: v1
@@ -86,9 +85,9 @@ spec:
     emptyDir: {}
 
 ```
-========================
-HOST PATH
-========================
+
+### HOST PATH
+
 
 ```yaml
 apiVersion: v1
