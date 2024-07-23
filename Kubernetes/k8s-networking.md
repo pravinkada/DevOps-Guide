@@ -1,18 +1,4 @@
 
-====================
- Install Docker
-$  sudo apt update && apt -y install docker.io
-
- Install kubectl
-$  curl -LO https://storage.googleapis.com/kubern... -s https://storage.googleapis.com/kubern... &&   chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl
-
- Install Minikube
-$  curl -Lo minikube https://storage.googleapis.com/miniku... && chmod +x minikube && sudo mv minikube /usr/local/bin/
-
- Start Minikube
-$  apt install conntrack
-$  minikube start --vm-driver=none
-$  minikube status
 =================================
 KUBERNETES NETWORKING
 =================================
