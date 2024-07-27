@@ -24,6 +24,17 @@
 - Each service defined in Docker Compose runs in its own isolated container, ensuring that dependencies and
 - configurations do not conflict with other services or applications on the host system.
 
+
+**Installation**
+````
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+````
+````
+sudo chmod +x /usr/local/bin/docker-compose
+````
+````
+docker-compose --version
+````
 **Example**
 
 
