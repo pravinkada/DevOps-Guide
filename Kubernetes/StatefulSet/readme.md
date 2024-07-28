@@ -1,10 +1,5 @@
 # Kubernetes Stateful Applications
 
-## Overview
-In Kubernetes (k8s), "stateful" refers to workloads and applications that require some form of persistent state across restarts and pods.
-
-## Key Concepts
-
 ### Stateful Applications
 Stateful applications save data to some form of storage that remains consistent across restarts. Examples include databases like MySQL and PostgreSQL.
 
@@ -38,9 +33,13 @@ spec:
   resources:
     requests:
       storage: 1Gi
+
+```
+
+
 StatefulSet
-yaml
-Copy code
+```yaml
+
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -73,6 +72,8 @@ spec:
       resources:
         requests:
           storage: 1Gi
+```
+
 StatefulSet Lifecycle
 Creation: Pods are created sequentially, each with a unique identity.
 Update: Pods are updated one at a time in a controlled order.
