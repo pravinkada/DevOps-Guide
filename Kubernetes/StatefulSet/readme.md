@@ -75,9 +75,9 @@ spec:
 ```
 
 StatefulSet Lifecycle
-Creation: Pods are created sequentially, each with a unique identity.
-Update: Pods are updated one at a time in a controlled order.
-Deletion: When scaled down, pods are terminated in reverse order.
+- Creation: Pods are created sequentially, each with a unique identity.
+- Update: Pods are updated one at a time in a controlled order.
+- Deletion: When scaled down, pods are terminated in reverse order.
 
 ## StatefulSet vs Deployment
 
