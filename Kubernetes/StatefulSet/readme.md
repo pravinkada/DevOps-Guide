@@ -78,9 +78,12 @@ StatefulSet Lifecycle
 Creation: Pods are created sequentially, each with a unique identity.
 Update: Pods are updated one at a time in a controlled order.
 Deletion: When scaled down, pods are terminated in reverse order.
-StatefulSet vs Deployment
-Feature	StatefulSet	Deployment
-Pod Identity	Unique and stable across rescheduling	Random
-Storage	Persistent volumes for each pod	Shared storage or ephemeral
-Pod Management	Ordered (creation, scaling, updating, deletion)	Random
-Use Case	Databases, stateful applications	Stateless applications, web servers
+
+## StatefulSet vs Deployment
+
+| Feature           | StatefulSet                                             | Deployment                          |
+|-------------------|---------------------------------------------------------|-------------------------------------|
+| **Pod Identity**  | Unique and stable across rescheduling                   | Random                              |
+| **Storage**       | Persistent volumes for each pod                         | Shared storage or ephemeral         |
+| **Pod Management**| Ordered (creation, scaling, updating, deletion)         | Random                              |
+| **Use Case**      | Databases, stateful applications                        | Stateless applications, web servers |
