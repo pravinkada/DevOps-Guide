@@ -1,20 +1,9 @@
-FROM centos:7
-
-LABEL APP="StudentAppB"
-LABEL User="Abhi"
-USER root
-WORKDIR /opt/
-ADD https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.99/bin/apache-tomcat-8.5.99.tar.gz .
-RUN tar -xzvf apache-tomcat-8.5.99.tar.gz
-RUN yum install java -y
-WORKDIR /opt/apache-tomcat-8.5.99
-COPY student.war  webapps/student.war
-COPY context.xml conf/context.xml
-ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/mysql-connector.jar lib/mysql-connector.jar
-
-EXPOSE 8080
-
-CMD ["bin/catalina.sh" , "run"]
-#ENTRYPOINT [ "bin/catalina.sh" , "RUN" ]
-#CMD bin/catalina.sh RUN 
-#ENTRYPOINT bin/catalina.sh RUN
+FROM ubuntu:20.04
+RUN apt update -y
+RUN apt install  openjdk-11-jdk -y
+WORKDIR /opt/tomcat
+EXPOSE 8080 
+ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.90/bin/apache-tomcat-9.0.90.tar.gz  /opt/tomcat
+RUN tar -xzf apache-tomcat-9.0.90.tar.gz -C /opt/tomcat
+ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/student.war /opt/tomcat/apache-tomcat-9.0.90/webapps/
+CMD ["apache-tomcat-9.0.90/bin/catalina.sh","run"]
