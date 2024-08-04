@@ -1,10 +1,6 @@
-FROM centos:7
-LABEL APP="StudentAppF"
-LABEL User="Abhi"
-
-
-RUN yum install httpd -y
+FROM amazonlinux
+RUN yum update -y && \
+    yum install -y httpd 
 COPY index.html /var/www/html/index.html
-
 EXPOSE 80
 CMD ["httpd", "-D", "FOREGROUND"]
