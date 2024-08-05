@@ -1,9 +1,21 @@
-FROM amazonlinux
-RUN yum update -y
-RUN yum install  openjdk-11-jdk -y
+FROM ubuntu:20.04
+
+USER root
+
+RUN apt update -y
+
+RUN apt install default-jdk -y
+
 WORKDIR /opt/tomcat
-EXPOSE 8080 
-ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.90/bin/apache-tomcat-9.0.90.tar.gz  /opt/tomcat
-RUN tar -xzf apache-tomcat-9.0.90.tar.gz -C /opt/tomcat
-ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/student.war /opt/tomcat/apache-tomcat-9.0.90/webapps/
-CMD ["apache-tomcat-9.0.90/bin/catalina.sh","run"]
+
+ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.91/bin/apache-tomcat-9.0.91.tar.gz /opt/tomcat
+
+RUN tar -xvzf apache-tomcat-9.0.91.tar.gz -C /opt/tomcat
+
+ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/student.war /opt/tomcat/apache-tomcat-9.0.91/webapps/
+
+ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/mysql-connector.jar /opt/tomcat/apache-tomcat-9.0.91/lib
+
+COPY context.xml ./apache-tomcat-9.0.91/conf/context.xml
+
+CMD ["apache-tomcat-9.0.91/bin/catalina.sh","run"]
