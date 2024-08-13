@@ -19,25 +19,42 @@ StatefulSets typically use Persistent Volumes (PVs) and Persistent Volume Claims
 - **Persistent Volume Claims (PVC):** A request for storage by a user. Pods use PVCs to request PVs.
 
 ## Example of a StatefulSet with Persistent Storage
-
+### Perssistent volume
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-mysql
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
+  hostPath:
+    path: /mnt/data/mysql
+```
 ### Persistent Volume Claim
 
 ```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mysql-pvc
+  name: pvc-mysql
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 10Gi
+  storageClassName: manual
+
 
 ```
 
 
-StatefulSet
+**StatefulSet**
 ```yaml
 
 apiVersion: apps/v1
@@ -45,11 +62,11 @@ kind: StatefulSet
 metadata:
   name: mysql
 spec:
-  serviceName: "mysql"
-  replicas: 1
   selector:
     matchLabels:
       app: mysql
+  serviceName: "mysql"
+  replicas: 3
   template:
     metadata:
       labels:
@@ -62,16 +79,21 @@ spec:
         - containerPort: 3306
           name: mysql
         volumeMounts:
-        - name: mysql-storage
+        - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "rootpassword"
   volumeClaimTemplates:
   - metadata:
-      name: mysql-storage
+      name: mysql-persistent-storage
     spec:
-      accessModes: [ "ReadWriteOnce" ]
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: manual
       resources:
         requests:
-          storage: 1Gi
+          storage: 10Gi
+
 ```
 
 StatefulSet Lifecycle
