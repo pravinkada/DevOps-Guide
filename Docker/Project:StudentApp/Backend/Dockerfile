@@ -1,21 +1,8 @@
-FROM ubuntu:20.04
-
-USER root
-
-RUN apt update -y
-
-RUN apt install default-jdk -y
-
-WORKDIR /opt/tomcat
-
-ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.91/bin/apache-tomcat-9.0.91.tar.gz /opt/tomcat
-
-RUN tar -xvzf apache-tomcat-9.0.91.tar.gz -C /opt/tomcat
-
-ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/student.war /opt/tomcat/apache-tomcat-9.0.91/webapps/
-
-ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/mysql-connector.jar /opt/tomcat/apache-tomcat-9.0.91/lib
-
-COPY context.xml ./apache-tomcat-9.0.91/conf/context.xml
-
-CMD ["apache-tomcat-9.0.91/bin/catalina.sh","run"]
+FROM tomcat:9
+EXPOSE 8080
+RUN rm -rf /usr/local/tomcat/webapps/ROOT && \
+    mv /usr/local/tomcat/webapps.dist/ROOT /usr/local/tomcat/webapps
+ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/student.war /usr/local/tomcat/webapps
+ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/mysql-connector.jar /usr/local/tomcat/lib
+COPY context.xml /usr/local/tomcat/conf/context.xml
+CMD ["catalina.sh", "run"]
